@@ -19,6 +19,11 @@ exports.signup = (req, res) => {
 
     var email = "renakaagusta28@gmail.com";
     var password = "@Renaka28";
+	
+	var mail = {
+	email: "renakaagusta28@gmail.com",
+	password: "@Renaka28"
+}
 
     user.save((err, user) => {
         if (err) {
