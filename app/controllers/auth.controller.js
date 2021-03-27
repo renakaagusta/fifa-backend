@@ -275,11 +275,7 @@ exports.signup = (req, res) => {
                     if (role.name != "admin") user.roles.push(role._id);
                 });
 
-                user.participant.location = {
-                    province: req.body.province ? req.body.province : "Jawa Tengah",
-                    city: req.body.city ? req.body.city : "Pati",
-                    subdistrict: req.body.subdistrict ? req.body.subdistrict : "Pati",
-                };
+       
 
                 user.save((err) => {
                     if (err) {
