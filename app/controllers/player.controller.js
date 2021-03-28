@@ -95,12 +95,15 @@ exports.create = async function(req, res) {
 
 // Handle update actions
 exports.update = function(req, res) {
-    var player = req.body.player;
-    player.updateAt = Date.now();
-    Player.findOneAndUpdate({ ID: req.params.id }, {
+    var player = req.body;
+console.log(player);
+   console.log(req.params);
+var id = parseInt(req.params.id);
+    Player.findOneAndUpdate({ _id:id }, {
             $set: player,
         })
         .then((player) => {
+console.log(player);
             if (player) {
                 return res.json({
                     message: "player berhasil diperbarui",

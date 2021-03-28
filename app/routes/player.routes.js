@@ -10,19 +10,19 @@ module.exports = function(app) {
         next();
     });
 
-    app.get("/api/v1/v1/player/all", [authJwt.verifyToken], controller.index);
-    app.get("/api/v1/v1/player/page/:page", [authJwt.verifyToken], controller.indexByPage);
-    app.get("/api/v1/v1/player/:id", [authJwt.verifyToken], controller.view);
+    app.get("/api/v1/player/all", [authJwt.verifyToken], controller.index);
+    app.get("/api/v1/player/page/:page", [authJwt.verifyToken], controller.indexByPage);
+    app.get("/api/v1/player/:id", [authJwt.verifyToken], controller.view);
     app.post(
-        "/api/v1/v1/player", [authJwt.verifyToken, authJwt.isAdmin],
+        "/api/v1/player", [authJwt.verifyToken, authJwt.isAdmin],
         controller.create
     );
     app.put(
-        "/api/v1/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
+        "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
         controller.update
     );
     app.delete(
-        "/api/v1/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
+        "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
         controller.delete
     );
 };

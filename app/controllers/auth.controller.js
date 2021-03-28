@@ -5,7 +5,7 @@ const User = db.user;
 const Role = db.role;
 const Mail = db.mail;
 
-var url = "http://52.170.214.236/";
+var url = "http://52.170.214.236:3000/api/v1/auth/";
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
