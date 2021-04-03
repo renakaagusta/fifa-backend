@@ -7,27 +7,25 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         username: req.body.username
     }).exec((err, user) => {
         if (err) {
-            return res.status(500).send({ message: err });
+            return res.status(500).send({ status: 500, message: err, data: null });
         }
 
         if (user) {
-            console.log(user)
-            return res.status(400).send({ message: "Username tersebut telah digunakan" });
+            return res.status(400).send({ status: 400, message: "This username has been used", data: null });
         }
-
+        //\\52.170.214.236\sambashare
         // Email
         User.findOne({
             email: req.body.email
         }).exec((err, user) => {
 
             if (err) {
-                return res.status(500).send({ message: err });
+                return res.status(500).send({ status: 500, message: err, data: null });
             }
             if (user) {
-                console.log(user)
-                return res.status(400).send({ message: "Email tersebut telah digunakan" });
+                return res.status(400).send({ status: 400, message: "This email has been used", data: null });
             }
-            console.log("oke2")
+
             next();
         });
     });
@@ -38,7 +36,9 @@ checkRolesExisted = (req, res, next) => {
         for (let i = 0; i < req.body.roles.length; i++) {
             if (!ROLES.includes(req.body.roles[i])) {
                 res.status(400).send({
-                    message: `Failed! Role ${req.body.roles[i]} does not exist!`
+                    status: 400,
+                    message: `Failed! Role ${req.body.roles[i]} does not exist!`,
+                    data: null
                 });
                 return;
             }

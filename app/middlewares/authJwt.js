@@ -4,88 +4,104 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('fifa');
+
 verifyToken = (req, res, next) => {
-  let token = req.headers["x-access-token"];
+    let token = req.headers["x-access-token"];
 
-  if (!token) {
-    return res.status(403).send({ message: "Tidak ada token" });
-  }
-
-  jwt.verify(token, config.secret, (err, decoded) => {
-    console.log(err)
-    if (err) {
-      return res.status(401).send({ message: "Sesi anda telah habis" });
+    if (!token) {
+        return res
+            .status(403)
+            .send({ status: 403, message: "Access token is required!", data: null });
     }
-    req.userId = decoded.id;
-    next();
-  });
+
+    token = cryptr.decrypt(token);
+
+    jwt.verify(token, config.secret, (err, decoded) => {
+        if (err) {
+            return res
+                .status(401)
+                .send({
+                    status: 401,
+                    message: "Your session has been finished!",
+                    data: null,
+                });
+        }
+        req.userId = decoded.id;
+        next();
+    });
 };
 
 isAdmin = (req, res, next) => {
-  User.findById(req.userId).exec((err, user) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
-
-    Role.find(
-      {
-        _id: { $in: user.roles }
-      },
-      (err, roles) => {
+    User.findById(req.userId).exec((err, user) => {
         if (err) {
-          res.status(500).send({ message: err });
-          return;
+            return res.status(500).send({ status: 500, message: err, data: null });
         }
 
-        for (let i = 0; i < roles.length; i++) {
-          if (roles[i].name === "admin") {
-            next();
-            return;
-          }
-        }
+        Role.find({
+                _id: { $in: user.roles },
+            },
+            (err, roles) => {
+                if (err) {
+                    return res
+                        .status(500)
+                        .send({ status: 500, message: err, data: null });
+                }
 
-        res.status(403).send({ message: "Require Admin Role!" });
-        return;
-      }
-    );
-  });
+                for (let i = 0; i < roles.length; i++) {
+                    if (roles[i].name === "admin") {
+                        next();
+                        return;
+                    }
+                }
+
+                return res.status(403).send({
+                    status: 403,
+                    message: "Admin role is required!",
+                    data: null,
+                });
+            }
+        );
+    });
 };
 
 isParticipant = (req, res, next) => {
-  User.findById(req.userId).exec((err, user) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
-
-    Role.find(
-      {
-        _id: { $in: user.roles }
-      },
-      (err, roles) => {
+    User.findById(req.userId).exec((err, user) => {
         if (err) {
-          res.status(500).send({ message: err });
-          return;
+            return res.status(500).send({ status: 500, message: err, data: null });
         }
 
-        for (let i = 0; i < roles.length; i++) {
-          if (roles[i].name === "participant") {
-            next();
-            return;
-          }
-        }
+        Role.find({
+                _id: { $in: user.roles },
+            },
+            (err, roles) => {
+                if (err) {
+                    return res
+                        .status(500)
+                        .send({ status: 500, message: err, data: null });
+                }
 
-        res.status(403).send({ message: "Require Participant Role!" });
-        return;
-      }
-    );
-  });
+                for (let i = 0; i < roles.length; i++) {
+                    if (roles[i].name === "participant") {
+                        next();
+                        return;
+                    }
+                }
+
+                res.status(403).send({
+                    status: 403,
+                    message: "Participant role is required!",
+                    data: null,
+                });
+            }
+        );
+    });
 };
 
 const authJwt = {
-  verifyToken,
-  isAdmin,
-  isParticipant
+    verifyToken,
+    isAdmin,
+    isParticipant,
 };
 module.exports = authJwt;

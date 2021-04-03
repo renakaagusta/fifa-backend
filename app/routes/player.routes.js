@@ -9,7 +9,6 @@ module.exports = function(app) {
         );
         next();
     });
-
     app.get("/api/v1/player/all", [authJwt.verifyToken], controller.index);
     app.get("/api/v1/player/page/:page", [authJwt.verifyToken], controller.indexByPage);
     app.get("/api/v1/player/:id", [authJwt.verifyToken], controller.view);
@@ -17,7 +16,7 @@ module.exports = function(app) {
         "/api/v1/player", [authJwt.verifyToken, authJwt.isAdmin],
         controller.create
     );
-    app.put(
+    app.post(
         "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
         controller.update
     );
