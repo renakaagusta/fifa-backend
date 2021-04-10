@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "01972eb1-bab4-44f7-bbfe-e4daeb0b3454",
+		"name": "fifa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SIGN UP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"halo\",\n    \"email\": \"renakaagusta28@gmail.com\",\n    \"password\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/auth/signup",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIGN IN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/auth/signin",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CONFIRM EMAIL",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "anava",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "renaka28",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/auth/confirm-email/5f9e80b7567e223d4c29c3ae",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"confirm-email",
+						"5f9e80b7567e223d4c29c3ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL PLAYERS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTcxOTM1Yzk5N2Q0MzgzMGEwM2Q2NSIsImlhdCI6MTYxNzM0MDQzMiwiZXhwIjoxNjE3NDI2ODMyfQ.m0SXR95vUpweurObIZqWDiWGnYvvEo7oGw6wd1JmxYU"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/player/all",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"player",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL PLAYERS BY PAGE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNWVmZTFhMDIwZGNhMTkwODlmOTg1OSIsImlhdCI6MTYxNjgzODQwOSwiZXhwIjoxNjE2OTI0ODA5fQ.4gCYZRuReOFSwIfhKqWIG7z-UgercMqXiRnREJbI4WY"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/player/page/2",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"player",
+						"page",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET PLAYER",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTcxOTM1Yzk5N2Q0MzgzMGEwM2Q2NSIsImlhdCI6MTYxNjMyMDgzOSwiZXhwIjoxNjE2NDA3MjM5fQ.vd8Meqkw4AUg9EqYcmrWaNgSnmCIcifaX_ZEWXSVuR8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/player/2",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"player",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE PLAYER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTcxOTM1Yzk5N2Q0MzgzMGEwM2Q2NSIsImlhdCI6MTYxNjMyMDgzOSwiZXhwIjoxNjE2NDA3MjM5fQ.vd8Meqkw4AUg9EqYcmrWaNgSnmCIcifaX_ZEWXSVuR8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\" : \"2\",\r\n    \"Name\" : \"G. Pasquale\",\r\n    \"Age\" : \"33\",\r\n    \"OVA\" : \"69\",\r\n    \"Nationality\" : \"Italy\",\r\n    \"Club\" : \"Udinese\",\r\n    \"BOV\" : \"71\",\r\n    \"BP\" : \"LWB\",\r\n    \"Position\" : \"LM\",\r\n    \"Player Photo\" : \"https://cdn.sofifa.com/players/000/002/16_120.png\",\r\n    \"Club Logo\" : \"https://cdn.sofifa.com/teams/55/light_60.png\",\r\n    \"Flag Photo\" : \"https://cdn.sofifa.com/flags/it.png\",\r\n    \"POT\" : \"69\",\r\n    \"Team & Contract\" : \"Udinese 2008 ~ 2016\",\r\n    \"Height\" : \"6'0\\\"\",\r\n    \"Weight\" : \"181lbs\",\r\n    \"foot\" : \"Left\",\r\n    \"Growth\" : \"0\",\r\n    \"Joined\" : \"Jul 1, 2008\",\r\n    \"Loan Date End\" : null,\r\n    \"Value\" : \"€625K\",\r\n    \"Wage\" : \"€7K\",\r\n    \"Release Clause\" : \"€0\",\r\n    \"Contract\" : \"2008 ~ 2016\",\r\n    \"Attacking\" : \"313\",\r\n    \"Crossing\" : \"75\",\r\n    \"Finishing\" : \"50\",\r\n    \"Heading Accuracy\" : \"59\",\r\n    \"Short Passing\" : \"71\",\r\n    \"Volleys\" : \"58.0\",\r\n    \"Skill\" : \"338\",\r\n    \"Dribbling\" : \"73\",\r\n    \"Curve\" : \"65.0\",\r\n    \"FK Accuracy\" : \"60\",\r\n    \"Long Passing\" : \"69\",\r\n    \"Ball Control\" : \"71\",\r\n    \"Movement\" : \"347\",\r\n    \"Acceleration\" : \"68\",\r\n    \"Sprint Speed\" : \"74\",\r\n    \"Agility\" : \"68.0\",\r\n    \"Reactions\" : \"69\",\r\n    \"Balance\" : \"68.0\",\r\n    \"Power\" : \"347\",\r\n    \"Shot Power\" : \"74\",\r\n    \"Jumping\" : \"68.0\",\r\n    \"Stamina\" : \"69\",\r\n    \"Strength\" : \"68\",\r\n    \"Long Shots\" : \"68\",\r\n    \"Mentality\" : \"320\",\r\n    \"Aggression\" : \"72\",\r\n    \"Interceptions\" : \"69.0\",\r\n    \"Positioning\" : \"63.0\",\r\n    \"Vision\" : \"66.0\",\r\n    \"Penalties\" : \"50\",\r\n    \"Composure\" : null,\r\n    \"Defending\" : \"208\",\r\n    \"Marking\" : \"70\",\r\n    \"Standing Tackle\" : \"69\",\r\n    \"Sliding Tackle\" : \"69.0\",\r\n    \"Goalkeeping\" : \"56\",\r\n    \"GK Diving\" : \"14\",\r\n    \"GK Handling\" : \"5\",\r\n    \"GK Kicking\" : \"15\",\r\n    \"GK Positioning\" : \"10\",\r\n    \"GK Reflexes\" : \"12\",\r\n    \"Total Stats\" : \"1929\",\r\n    \"Base Stats\" : \"408\",\r\n    \"W/F\" : \"3 ★\",\r\n    \"SM\" : \"2★\",\r\n    \"A/W\" : \"Medium\",\r\n    \"D/W\" : \"High\",\r\n    \"IR\" : \"2 ★\",\r\n    \"PAC\" : \"71\",\r\n    \"SHO\" : \"59\",\r\n    \"PAS\" : \"70\",\r\n    \"DRI\" : \"71\",\r\n    \"DEF\" : \"68\",\r\n    \"PHY\" : \"69\",\r\n    \"Hits\" : \"4\",\r\n    \"LS\" : \"65+0\",\r\n    \"ST\" : \"65+0\",\r\n    \"RS\" : \"65+0\",\r\n    \"LW\" : \"68+0\",\r\n    \"LF\" : \"67+0\",\r\n    \"CF\" : \"67+0\",\r\n    \"RF\" : \"67+0\",\r\n    \"RW\" : \"68+0\",\r\n    \"LAM\" : \"68+0\",\r\n    \"CAM\" : \"68+0\",\r\n    \"RAM\" : \"68+0\",\r\n    \"LM\" : \"69+0\",\r\n    \"LCM\" : \"69+0\",\r\n    \"CM\" : \"69+0\",\r\n    \"RCM\" : \"69+0\",\r\n    \"RM\" : \"69+0\",\r\n    \"LWB\" : \"71+-2\",\r\n    \"LDM\" : \"70+-1\",\r\n    \"CDM\" : \"70+-1\",\r\n    \"RDM\" : \"70+-1\",\r\n    \"RWB\" : \"71+-2\",\r\n    \"LB\" : \"70+-1\",\r\n    \"LCB\" : \"69+0\",\r\n    \"CB\" : \"69+0\",\r\n    \"RCB\" : \"69+0\",\r\n    \"RB\" : \"70+-1\",\r\n    \"GK\" : \"17+0\",\r\n    \"Gender\" : \"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/player",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE PLAYER",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTcxOTM1Yzk5N2Q0MzgzMGEwM2Q2NSIsImlhdCI6MTYxNzM0MDQzMiwiZXhwIjoxNjE3NDI2ODMyfQ.m0SXR95vUpweurObIZqWDiWGnYvvEo7oGw6wd1JmxYU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\" : \"16\",\r\n    \"Name\" : \"G. Pasquale\",\r\n    \"Age\" : \"33\",\r\n    \"OVA\" : \"69\",\r\n    \"Nationality\" : \"Italy\",\r\n    \"Club\" : \"Udinese\",\r\n    \"BOV\" : \"71\",\r\n    \"BP\" : \"LWB\",\r\n    \"Position\" : \"LM\",\r\n    \"Player Photo\" : \"https://cdn.sofifa.com/players/000/002/16_120.png\",\r\n    \"Club Logo\" : \"https://cdn.sofifa.com/teams/55/light_60.png\",\r\n    \"Flag Photo\" : \"https://cdn.sofifa.com/flags/it.png\",\r\n    \"POT\" : \"69\",\r\n    \"Team & Contract\" : \"Udinese 2008 ~ 2016\",\r\n    \"Height\" : \"6'0\\\"\",\r\n    \"Weight\" : \"181lbs\",\r\n    \"foot\" : \"Left\",\r\n    \"Growth\" : \"0\",\r\n    \"Joined\" : \"Jul 1, 2008\",\r\n    \"Loan Date End\" : null,\r\n    \"Value\" : \"€625K\",\r\n    \"Wage\" : \"€7K\",\r\n    \"Release Clause\" : \"€0\",\r\n    \"Contract\" : \"2008 ~ 2016\",\r\n    \"Attacking\" : \"313\",\r\n    \"Crossing\" : \"75\",\r\n    \"Finishing\" : \"50\",\r\n    \"Heading Accuracy\" : \"59\",\r\n    \"Short Passing\" : \"71\",\r\n    \"Volleys\" : \"58.0\",\r\n    \"Skill\" : \"338\",\r\n    \"Dribbling\" : \"73\",\r\n    \"Curve\" : \"65.0\",\r\n    \"FK Accuracy\" : \"60\",\r\n    \"Long Passing\" : \"69\",\r\n    \"Ball Control\" : \"71\",\r\n    \"Movement\" : \"347\",\r\n    \"Acceleration\" : \"68\",\r\n    \"Sprint Speed\" : \"74\",\r\n    \"Agility\" : \"68.0\",\r\n    \"Reactions\" : \"69\",\r\n    \"Balance\" : \"68.0\",\r\n    \"Power\" : \"347\",\r\n    \"Shot Power\" : \"74\",\r\n    \"Jumping\" : \"68.0\",\r\n    \"Stamina\" : \"69\",\r\n    \"Strength\" : \"68\",\r\n    \"Long Shots\" : \"68\",\r\n    \"Mentality\" : \"320\",\r\n    \"Aggression\" : \"72\",\r\n    \"Interceptions\" : \"69.0\",\r\n    \"Positioning\" : \"63.0\",\r\n    \"Vision\" : \"66.0\",\r\n    \"Penalties\" : \"50\",\r\n    \"Composure\" : null,\r\n    \"Defending\" : \"208\",\r\n    \"Marking\" : \"70\",\r\n    \"Standing Tackle\" : \"69\",\r\n    \"Sliding Tackle\" : \"69.0\",\r\n    \"Goalkeeping\" : \"56\",\r\n    \"GK Diving\" : \"14\",\r\n    \"GK Handling\" : \"5\",\r\n    \"GK Kicking\" : \"15\",\r\n    \"GK Positioning\" : \"10\",\r\n    \"GK Reflexes\" : \"12\",\r\n    \"Total Stats\" : \"1929\",\r\n    \"Base Stats\" : \"408\",\r\n    \"W/F\" : \"3 ★\",\r\n    \"SM\" : \"2★\",\r\n    \"A/W\" : \"Medium\",\r\n    \"D/W\" : \"High\",\r\n    \"IR\" : \"2 ★\",\r\n    \"PAC\" : \"71\",\r\n    \"SHO\" : \"59\",\r\n    \"PAS\" : \"70\",\r\n    \"DRI\" : \"71\",\r\n    \"DEF\" : \"68\",\r\n    \"PHY\" : \"69\",\r\n    \"Hits\" : \"4\",\r\n    \"LS\" : \"65+0\",\r\n    \"ST\" : \"65+0\",\r\n    \"RS\" : \"65+0\",\r\n    \"LW\" : \"68+0\",\r\n    \"LF\" : \"67+0\",\r\n    \"CF\" : \"67+0\",\r\n    \"RF\" : \"67+0\",\r\n    \"RW\" : \"68+0\",\r\n    \"LAM\" : \"68+0\",\r\n    \"CAM\" : \"68+0\",\r\n    \"RAM\" : \"68+0\",\r\n    \"LM\" : \"69+0\",\r\n    \"LCM\" : \"69+0\",\r\n    \"CM\" : \"69+0\",\r\n    \"RCM\" : \"69+0\",\r\n    \"RM\" : \"69+0\",\r\n    \"LWB\" : \"71+-2\",\r\n    \"LDM\" : \"70+-1\",\r\n    \"CDM\" : \"70+-1\",\r\n    \"RDM\" : \"70+-1\",\r\n    \"RWB\" : \"71+-2\",\r\n    \"LB\" : \"70+-1\",\r\n    \"LCB\" : \"69+0\",\r\n    \"CB\" : \"69+0\",\r\n    \"RCB\" : \"69+0\",\r\n    \"RB\" : \"70+-1\",\r\n    \"GK\" : \"17+0\",\r\n    \"Gender\" : \"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/player/16",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"player",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE PLAYER",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNTcxOTM1Yzk5N2Q0MzgzMGEwM2Q2NSIsImlhdCI6MTYxNjMyMDgzOSwiZXhwIjoxNjE2NDA3MjM5fQ.vd8Meqkw4AUg9EqYcmrWaNgSnmCIcifaX_ZEWXSVuR8"
+					}
+				],
+				"url": {
+					"raw": "52.170.214.236:3000/api/v1/player/2",
+					"host": [
+						"52",
+						"170",
+						"214",
+						"236"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"player",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e52ec58e-3eb2-43b4-8b28-49bae51ec091",
+			"key": "URL",
+			"value": "52.170.214.236"
+		}
+	]
+}

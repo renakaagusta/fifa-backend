@@ -1,4 +1,4 @@
-# fifa-backend
+# Project: fifa
 
 ## End-point: SIGN UP
 ### Description: 
