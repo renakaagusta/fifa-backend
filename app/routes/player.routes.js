@@ -16,7 +16,7 @@ module.exports = function(app) {
         "/api/v1/player", [authJwt.verifyToken, authJwt.isAdmin],
         controller.create
     );
-    app.post(
+    app.put(
         "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
         controller.update
     );
