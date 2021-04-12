@@ -81,7 +81,7 @@ exports.view = async function(req, res) {
                     data: null,
                 });
 
-            return response.status(200).send({
+            return res.status(200).send({
                 status: 200,
                 message: "player Detail Loading...",
                 data: player,

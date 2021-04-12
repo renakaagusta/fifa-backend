@@ -1,4 +1,4 @@
-const { authJwt } = require("../middlewares");
+const { authJwt, verifyEmail } = require("../middlewares");
 const controller = require("../controllers/player.controller");
 
 module.exports = function(app) {
@@ -9,19 +9,19 @@ module.exports = function(app) {
         );
         next();
     });
-    app.get("/api/v1/player/all", [authJwt.verifyToken], controller.index);
-    app.get("/api/v1/player/page/:page", [authJwt.verifyToken], controller.indexByPage);
-    app.get("/api/v1/player/:id", [authJwt.verifyToken], controller.view);
+    app.get("/api/v1/player/all", [authJwt.verifyToken, verifyEmail.checkEmail], controller.index);
+    app.get("/api/v1/player/page/:page", [authJwt.verifyToken, verifyEmail.checkEmail], controller.indexByPage);
+    app.get("/api/v1/player/:id", [authJwt.verifyToken, verifyEmail.checkEmail], controller.view);
     app.post(
-        "/api/v1/player", [authJwt.verifyToken, authJwt.isAdmin],
+        "/api/v1/player", [authJwt.verifyToken, authJwt.isAdmin, verifyEmail.checkEmail],
         controller.create
     );
     app.put(
-        "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
+        "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin, verifyEmail.checkEmail],
         controller.update
     );
     app.delete(
-        "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin],
+        "/api/v1/player/:id", [authJwt.verifyToken, authJwt.isAdmin, verifyEmail.checkEmail],
         controller.delete
     );
 };

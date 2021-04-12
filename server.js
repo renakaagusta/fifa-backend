@@ -33083,7 +33083,6 @@ function initial() {
 
                     console.log(player.ID + " added successfuly");
                 });
-
             })
         }
     });

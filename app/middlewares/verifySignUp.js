@@ -3,6 +3,7 @@ const ROLES = db.ROLES;
 const User = db.user;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
+
     User.findOne({
         username: req.body.username
     }).exec((err, user) => {
@@ -13,7 +14,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         if (user) {
             return res.status(400).send({ status: 400, message: "This username has been used", data: null });
         }
-        //\\52.170.214.236\sambashare
+
         // Email
         User.findOne({
             email: req.body.email
