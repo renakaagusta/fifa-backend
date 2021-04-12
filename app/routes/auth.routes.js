@@ -17,6 +17,6 @@ module.exports = function(app) {
         controller.signup
     );
     app.post("/api/v1/auth/signin", controller.signin);
-    app.put("/api/v1/auth/confirm-email/:id", controller.confirmEmail);
+    app.get("/api/v1/auth/confirm-email/:id", controller.confirmEmail);
     app.get("/api/v1/auth/all", controller.index, authJwt.isAdmin);
 };

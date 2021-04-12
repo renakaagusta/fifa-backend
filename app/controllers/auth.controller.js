@@ -60,7 +60,7 @@ exports.signup = (req, res) => {
             return res.status(500).send({ status: 500, message: err, data: null });
         }
 
-        user._id = cryptr.encrypt(user._id);
+        user.id = cryptr.encrypt(user._id);
 
         var mailBodyForVerification = "";
         mailBodyForVerification += "<!DOCTYPE html>";
@@ -232,10 +232,9 @@ exports.signup = (req, res) => {
         mailBodyForVerification +=
             "                                            <tr>";
         mailBodyForVerification +=
-            '                                                <td align="center" style="border-radius: 3px;" bgcolor="#58427c"><form method="PUT" action="'
-        url +
+            '                                                <td align="center" style="border-radius: 3px;" bgcolor="#58427c"><a href="' + url +
             "confirm-email/" +
-            user._id + '"><input type="submit" value="Konfirmasi" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; display: inline-block;"/></form></td>';
+            user.id + '" value="Konfirmasi" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; display: inline-block;">Konfirmasi</a></td>';
         mailBodyForVerification +=
             "                                            </tr>";
         mailBodyForVerification +=
@@ -446,24 +445,8 @@ exports.signin = (req, res) => {
         });
 };
 
-exports.findByEmail = (req, res) => {
-    User.findOne({
-            email: req.body.email,
-        },
-        (err, user) => {
-            if (err) throw err;
-
-            return res.json({
-                status: "success",
-                message: "User detail loading..",
-                data: user,
-            });
-        }
-    );
-};
-
 exports.confirmEmail = (req, res) => {
-    id = cryptr.decrypt(req.params.id);
+    req.params.id = cryptr.decrypt(req.params.id);
     User.findOneAndUpdate({
             _id: req.params.id,
         }, {

@@ -5,13 +5,13 @@ services:
     container_name: mongodb
     hostname: mongo
     volumes:
-      - mongodb:/data/db
+      - mongodb:/data/db2
     restart:
       always
     networks:
       - node-docker-networks
   node-docker:
-    image : renakaagusta/fifa-node-docker:0.0.1
+    image : fifa:0.0.3
     ports:
       - 3000:3000
     depends_on:
