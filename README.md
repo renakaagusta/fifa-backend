@@ -42,4 +42,10 @@ Endpoint yang berkaitan dengan data player. Setiap endpoint membutuhkan jwtToken
 
 ### Dokumentasi POSTMAN
 
-[Postman](docs/B201Baktilab.postman_collection.json)
+[Postman](docs/fifa.postman_collection.json)
+
+## API
+IP : 52.170.214.236
+
+## Catatan
+Untuk autentikasi sebagai super admin selain menggunakan header x-access-token, tambahkan header auth-token dengan value qwertyuiop
