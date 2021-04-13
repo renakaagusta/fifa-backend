@@ -11,7 +11,7 @@ services:
     networks:
       - node-docker-networks
   node-docker:
-    image : fifa:0.0.3
+    image : renakaagusta/fifa-node-docker:0.0.1
     ports:
       - 3000:3000
     depends_on:

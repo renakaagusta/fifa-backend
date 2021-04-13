@@ -9,10 +9,10 @@ var url = "http://52.170.214.236:3000/api/v1/auth/";
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
-var sanitize = require('mongo-sanitize');
+var sanitize = require("mongo-sanitize");
 
-const Cryptr = require('cryptr');
-const cryptr = new Cryptr('fifa');
+const Cryptr = require("cryptr");
+const cryptr = new Cryptr("fifa");
 
 // Handle index actions
 exports.index = async function(req, res) {
@@ -232,9 +232,11 @@ exports.signup = (req, res) => {
         mailBodyForVerification +=
             "                                            <tr>";
         mailBodyForVerification +=
-            '                                                <td align="center" style="border-radius: 3px;" bgcolor="#58427c"><a href="' + url +
+            '                                                <td align="center" style="border-radius: 3px;" bgcolor="#58427c"><a href="' +
+            url +
             "confirm-email/" +
-            user.id + '" value="Konfirmasi" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; display: inline-block;">Konfirmasi</a></td>';
+            user.id +
+            '" value="Konfirmasi" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; display: inline-block;">Konfirmasi</a></td>';
         mailBodyForVerification +=
             "                                            </tr>";
         mailBodyForVerification +=
@@ -401,10 +403,7 @@ exports.signin = (req, res) => {
                 });
             }
 
-            var passwordIsValid = bcrypt.compareSync(
-                password,
-                user.password
-            );
+            var passwordIsValid = bcrypt.compareSync(password, user.password);
 
             if (!passwordIsValid) {
                 return res.status(401).send({
@@ -469,4 +468,40 @@ exports.confirmEmail = (req, res) => {
             });
         }
     );
+};
+
+exports.makeAdmin = (req, res) => {
+    var newRole = [];
+    Role.find((err, roles) => {
+        roles.forEach((role) => {
+            if (role.name != "participant") {
+                newRole.push(role._id);
+                console.log(newRole);
+            }
+            console.log(roles);
+        });
+
+        User.findOneAndUpdate({
+                _id: req.params.id,
+            }, {
+                $set: {
+                    roles: newRole,
+                },
+            }, { new: true },
+            (err, user) => {
+                if (err)
+                    return res.send({
+                        status: 500,
+                        message: err,
+                        data: null,
+                    });
+
+                return res.status(200).send({
+                    status: 200,
+                    message: "User has successfully granted as admin!",
+                    data: user,
+                });
+            }
+        );
+    });
 };

@@ -12,8 +12,8 @@ verifyToken = (req, res, next) => {
 
     if (!token) {
         return res
-            .status(403)
-            .send({ status: 403, message: "Access token is required!", data: null });
+            .status(401)
+            .send({ status: 401, message: "Access token is required!", data: null });
     }
 
     token = cryptr.decrypt(token);
@@ -21,9 +21,9 @@ verifyToken = (req, res, next) => {
     jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
             return res
-                .status(401)
+                .status(403)
                 .send({
-                    status: 401,
+                    status: 403,
                     message: "Your session has been finished!",
                     data: null,
                 });
@@ -39,12 +39,11 @@ isAdmin = (req, res, next) => {
 
     if (!token) {
         return res
-            .status(403)
-            .send({ status: 403, message: "Access token is required!", data: null });
+            .status(401)
+            .send({ status: 401, message: "Access token is required!", data: null });
     }
 
     token = cryptr.decrypt(token);
-    console.log(token);
     jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
             return res
@@ -56,8 +55,7 @@ isAdmin = (req, res, next) => {
                 });
         }
         req.userId = decoded.id;
-        console.log(req.userId);
-        console.log("oke")
+
         User.findById(req.userId).exec((err, user) => {
             if (err) {
                 return res.status(500).send({ status: 500, message: err, data: null });

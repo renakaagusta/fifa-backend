@@ -6,13 +6,121 @@
 	},
 	"item": [
 		{
+			"name": "GET ALL USERS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "3d92dc81226fae546b951fb5cd4d1963feaed73652086dd08046c69aa5d60f15d488c1d32ce1e1f8edce5bca5a863d2e2493854415ccb7fb9aea4004badeb789d37572e1f9dfa9e3f50f886429c0d948a91e3c4b01cf0522f267eb964d1a160f2ce3df9bf2a268c6fab50b485491dd7fe856d0f78d068c11da5963cbd96575f19c894fc330b1ab68a0625e79359523f2b9923866511e4f51f3ea15b2d3839f8db6297785af6164f398a5704699f0daac6893827875b3fb4036d13a544f875831443fb1e1e3555a425dc18bdfc43381809dd7ab7f8551af92bdf835812e0f05fb836f22675dc7aa77026868a973836bfea190e487a716bd380cd3ddb80e91034a2136a870a5bf31bb8d4b62"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/auth/all",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET ALL USERS",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "3d92dc81226fae546b951fb5cd4d1963feaed73652086dd08046c69aa5d60f15d488c1d32ce1e1f8edce5bca5a863d2e2493854415ccb7fb9aea4004badeb789d37572e1f9dfa9e3f50f886429c0d948a91e3c4b01cf0522f267eb964d1a160f2ce3df9bf2a268c6fab50b485491dd7fe856d0f78d068c11da5963cbd96575f19c894fc330b1ab68a0625e79359523f2b9923866511e4f51f3ea15b2d3839f8db6297785af6164f398a5704699f0daac6893827875b3fb4036d13a544f875831443fb1e1e3555a425dc18bdfc43381809dd7ab7f8551af92bdf835812e0f05fb836f22675dc7aa77026868a973836bfea190e487a716bd380cd3ddb80e91034a2136a870a5bf31bb8d4b62"
+							},
+							{
+								"key": "auth-token",
+								"value": "qwertyuiop",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}:3000/api/v1/auth",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "x-access-token, auth-token, Origin, Content-Type, Accept"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "545"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"221-n+axuketwvGd4dBAgcC8DIgHy70\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 Apr 2021 04:15:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"User Added Successfully\",\n    \"data\": [\n        {\n            \"_id\": \"60571935c997d43830a03d65\",\n            \"verification\": 1,\n            \"roles\": [\n                \"6056cd754f892430703ef28e\",\n                \"6056cd754f892430703ef28c\"\n            ],\n            \"username\": \"admin\",\n            \"email\": \"renakaagusta@gmail.com\",\n            \"password\": \"$2a$08$rfDI9ttneWIPCtLEGFFKGu71oY78xrU4MGPHh0urhufAroGbsSzNW\"\n        },\n        {\n            \"_id\": \"6073fe016037b85754bc94d1\",\n            \"verification\": 0,\n            \"roles\": [\n                \"6056cd754f892430703ef28d\",\n                \"6056cd754f892430703ef28c\"\n            ],\n            \"username\": \"halo3\",\n            \"email\": \"renakaagusta28@gmail.com\",\n            \"password\": \"$2a$08$VMe9aeyhMEsaU8mVEEUKW.ZbqXLUeaoNUUEW4NWnJUGG3tkHO29Se\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
 			"name": "SIGN UP",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"halo\",\n    \"email\": \"renakaagusta28@gmail.com\",\n    \"password\": \"admin\"\n}",
+					"raw": "{\n    \"username\": \"admin\",\n    \"email\": \"autowin.its@gmail.com\",\n    \"password\": \"admin\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -593,8 +701,11 @@
 		},
 		{
 			"name": "CONFIRM EMAIL",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "urlencoded",
@@ -627,6 +738,112 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "MAKE USER AS ADMIN",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"type": "text",
+						"value": "3d92dc81226fae546b951fb5cd4d1963feaed73652086dd08046c69aa5d60f15d488c1d32ce1e1f8edce5bca5a863d2e2493854415ccb7fb9aea4004badeb789d37572e1f9dfa9e3f50f886429c0d948a91e3c4b01cf0522f267eb964d1a160f2ce3df9bf2a268c6fab50b485491dd7fe856d0f78d068c11da5963cbd96575f19c894fc330b1ab68a0625e79359523f2b9923866511e4f51f3ea15b2d3839f8db6297785af6164f398a5704699f0daac6893827875b3fb4036d13a544f875831443fb1e1e3555a425dc18bdfc43381809dd7ab7f8551af92bdf835812e0f05fb836f22675dc7aa77026868a973836bfea190e487a716bd380cd3ddb80e91034a2136a870a5bf31bb8d4b62"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{URL}}:3000/api/v1/auth/6073fe016037b85754bc94d1/grant-admin",
+					"host": [
+						"{{URL}}"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"6073fe016037b85754bc94d1",
+						"grant-admin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET ALL USERS",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "3d92dc81226fae546b951fb5cd4d1963feaed73652086dd08046c69aa5d60f15d488c1d32ce1e1f8edce5bca5a863d2e2493854415ccb7fb9aea4004badeb789d37572e1f9dfa9e3f50f886429c0d948a91e3c4b01cf0522f267eb964d1a160f2ce3df9bf2a268c6fab50b485491dd7fe856d0f78d068c11da5963cbd96575f19c894fc330b1ab68a0625e79359523f2b9923866511e4f51f3ea15b2d3839f8db6297785af6164f398a5704699f0daac6893827875b3fb4036d13a544f875831443fb1e1e3555a425dc18bdfc43381809dd7ab7f8551af92bdf835812e0f05fb836f22675dc7aa77026868a973836bfea190e487a716bd380cd3ddb80e91034a2136a870a5bf31bb8d4b62"
+							},
+							{
+								"key": "auth-token",
+								"value": "qwertyuiop",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}:3000/api/v1/auth",
+							"host": [
+								"{{URL}}"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "x-access-token, auth-token, Origin, Content-Type, Accept"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "545"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"221-n+axuketwvGd4dBAgcC8DIgHy70\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 13 Apr 2021 04:15:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"User Added Successfully\",\n    \"data\": [\n        {\n            \"_id\": \"60571935c997d43830a03d65\",\n            \"verification\": 1,\n            \"roles\": [\n                \"6056cd754f892430703ef28e\",\n                \"6056cd754f892430703ef28c\"\n            ],\n            \"username\": \"admin\",\n            \"email\": \"renakaagusta@gmail.com\",\n            \"password\": \"$2a$08$rfDI9ttneWIPCtLEGFFKGu71oY78xrU4MGPHh0urhufAroGbsSzNW\"\n        },\n        {\n            \"_id\": \"6073fe016037b85754bc94d1\",\n            \"verification\": 0,\n            \"roles\": [\n                \"6056cd754f892430703ef28d\",\n                \"6056cd754f892430703ef28c\"\n            ],\n            \"username\": \"halo3\",\n            \"email\": \"renakaagusta28@gmail.com\",\n            \"password\": \"$2a$08$VMe9aeyhMEsaU8mVEEUKW.ZbqXLUeaoNUUEW4NWnJUGG3tkHO29Se\"\n        }\n    ]\n}"
+				}
+			]
 		},
 		{
 			"name": "GET ALL PLAYERS",
@@ -664,7 +881,7 @@
 				{
 					"name": "GET ALL PLAYERS Success",
 					"originalRequest": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "x-access-token",
@@ -1347,7 +1564,7 @@
 	],
 	"variable": [
 		{
-			"id": "2d16d37e-db1d-4b6b-a451-08808112436c",
+			"id": "d91ae780-9a08-4235-9320-1e6d8208ef1a",
 			"key": "URL",
 			"value": "52.170.214.236"
 		}
